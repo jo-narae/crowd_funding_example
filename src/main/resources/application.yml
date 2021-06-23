@@ -1,0 +1,31 @@
+server:
+  port: 4000
+  error:
+    include-exception: true # 오류 응답에 exception의 내용을 포함할지 여부
+    include-stacktrace: always # 오류 응답에 stacktrace 내용을 포함할 지 여부
+
+
+#ddl-auto와 generate-ddl은 한쌍
+#ddl 끌 때 none, false
+#ddl 킬 때 update, true
+spring:
+  datasource:
+    connectionProperties: useUnicode=true;characterEncoding=utf-8;
+    url: jdbc:mysql://localhost:3306/crowd_funding?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 1234
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    generate-ddl: true
+
+logging:
+  level:
+    root: info
